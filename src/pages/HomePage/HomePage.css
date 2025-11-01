@@ -1,0 +1,46 @@
+/* src/pages/HomePage/HomePage.css */
+.home-page .hero {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.home-page .hero h1 {
+  margin-bottom: 15px;
+  font-size: 2.8rem;
+}
+
+.home-page .hero .subtitle {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* Estilo para las filas y columnas  */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas */
+  gap: 30px;
+  text-align: center;
+}
+
+.feature-item img {
+  border-radius: 8px;
+  margin-bottom: 15px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.feature-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+  }
+}

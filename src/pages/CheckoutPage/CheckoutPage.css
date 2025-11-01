@@ -1,0 +1,103 @@
+/* src/pages/CheckoutPage/CheckoutPage.css */
+.checkout-page h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.checkout-page > p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Layout de dos columnas */
+.checkout-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.checkout-form h3 {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.order-summary {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.order-summary li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.order-summary li.total {
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-top: 2px solid var(--secondary-color);
+  margin-top: 10px;
+}
+
+.delivery-options {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.delivery-options legend {
+  font-weight: bold;
+  padding: 0 10px;
+  color: var(--secondary-color);
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.radio-group label {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.radio-group input[type="radio"] {
+  width: 18px;
+  height: 18px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.checkout-image img {
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 900px) {
+  .checkout-content {
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+  }
+  .checkout-image {
+    order: -1; /* Mueve la imagen arriba en móviles */
+  }
+}
