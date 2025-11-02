@@ -16,7 +16,7 @@ const HomePage = () => {
             Tu espacio multifuncional de libros, coworking y el mejor café.
           </p>
           <p>
-            Nexus no es solo una librería[cite: 3]; es un punto de encuentro. Un
+            Nexus no es solo una librería; es un punto de encuentro. Un
             lugar donde la cultura, el trabajo y el placer se fusionan. Descubre
             nuestra zona de coworking, disfruta de un café de especialidad o
             piérdete entre nuestras estanterías.
@@ -52,5 +52,7 @@ const HomePage = () => {
     </Layout>
   );
 };
+
+
 
 export default HomePage;

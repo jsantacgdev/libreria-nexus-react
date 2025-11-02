@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body { @apply bg-white text-ink-900 antialiased; }
+}
+
+@layer components {
+  .container-page { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .card { @apply bg-white rounded-xl2 shadow-soft border border-slate-100; }
+  .btn { @apply inline-flex items-center gap-2 rounded-xl2 px-4 py-2 shadow-soft hover:shadow-md transition; }
+  .btn-primary { @apply bg-primary-600 text-white hover:bg-primary-700; }
+  .link { @apply text-primary-600 hover:text-primary-700 underline-offset-2 hover:underline; }
+}

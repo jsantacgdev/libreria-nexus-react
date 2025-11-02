@@ -1,0 +1,6 @@
+[
+  { "id": 1, "title": "Clean Code", "author": "Robert C. Martin", "price": 29.9, "cover": "https://covers.openlibrary.org/b/id/9641982-L.jpg" },
+  { "id": 2, "title": "You Don't Know JS Yet", "author": "Kyle Simpson", "price": 24.5, "cover": "https://covers.openlibrary.org/b/id/10523308-L.jpg" },
+  { "id": 3, "title": "Refactoring", "author": "Martin Fowler", "price": 34.0, "cover": "https://covers.openlibrary.org/b/id/9254153-L.jpg" },
+  { "id": 4, "title": "Design Patterns", "author": "Gamma et al.", "price": 39.0, "cover": "https://covers.openlibrary.org/b/id/9254151-L.jpg" }
+]
