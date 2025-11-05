@@ -1,79 +1,160 @@
-// src/pages/CheckoutPage/CheckoutPage.jsx
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
+import { useCart } from "../../hooks/useCart";
+import { formatPriceDisplay } from "../../utils/price";
+import { useNavigate } from "react-router-dom";
 import "./CheckoutPage.css";
-// import checkoutImg from '../../assets/checkout.jpg';
 
 const CheckoutPage = () => {
+  const { items, total, clear } = useCart();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    direccion: "",
+    metodoPago: "tarjeta"
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Pedido realizado. ¡Gracias por tu compra!");
+    alert("¡Pedido realizado con éxito! Recibirás un email de confirmación.");
+    clear();
+    navigate("/catalogo");
   };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  if (items.length === 0) {
+    return (
+      <Layout>
+        <div className="checkout-page">
+          <h1>Finalizar Compra</h1>
+          <p className="text-center text-ink-700 mt-6">
+            Tu carrito está vacío. 
+            <a href="/catalogo" className="text-primary-600 hover:underline ml-2">
+              Ir al catálogo
+            </a>
+          </p>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
       <div className="checkout-page">
-        <h1>Finalizar Pedido</h1>
+        <h1>Finalizar Compra</h1>
         <p>
-          Ya casi está. Revisa tu pedido y dinos dónde quieres recibirlo. Puedes
-          recogerlo cómodamente en el mostrador o te lo llevamos directamente a
-          tu mesa de la zona de coworking.
+          Completa tus datos para finalizar la compra de tus libros.
         </p>
 
-        {/* Layout de dos columnas  */}
         <div className="checkout-content">
-          {/* Columna 1: Formulario */}
           <form className="checkout-form" onSubmit={handleSubmit}>
-            <h3>1. Revisa tu pedido (ejemplo)</h3>
+            <h3>1. Resumen del pedido</h3>
             <ul className="order-summary">
-              <li>
-                Espresso Doble <span>$2.50</span>
-              </li>
-              <li>
-                Croissant de Mantequilla <span>$1.80</span>
-              </li>
+              {items.map((item) => (
+                <li key={item.id}>
+                  {item.titulo || item.title} x{item.qty}
+                  <span>{formatPriceDisplay(item.price * item.qty)}</span>
+                </li>
+              ))}
               <li className="total">
-                Total <span>$4.30</span>
+                Total <span>{formatPriceDisplay(total)}</span>
               </li>
             </ul>
 
-            {/* Requisito: Selección de entrega  */}
-            <h3>2. Selecciona el punto de entrega</h3>
+            <h3>2. Datos de envío</h3>
+            <div className="form-group">
+              <label htmlFor="nombre">Nombre completo *</label>
+              <input 
+                type="text" 
+                id="nombre" 
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                required 
+                placeholder="Tu nombre completo"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Email *</label>
+              <input 
+                type="text" 
+                id="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required 
+                placeholder="tu@email.com"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="direccion">Dirección de envío *</label>
+              <input
+              type="text" 
+                id="direccion" 
+                name="direccion"
+                value={formData.direccion}
+                onChange={handleChange}
+                required 
+                placeholder="Calle, número, piso, código postal, ciudad"
+              />
+            </div>
+
+            <h3>3. Método de pago</h3>
             <fieldset className="delivery-options">
-              <legend>¿Dónde te lo llevamos?</legend>
               <div className="radio-group">
                 <input
                   type="radio"
-                  id="mostrador"
-                  name="entrega"
-                  value="mostrador"
-                  defaultChecked
+                  id="tarjeta"
+                  name="metodoPago"
+                  value="tarjeta"
+                  checked={formData.metodoPago === "tarjeta"}
+                  onChange={handleChange}
                 />
-                <label htmlFor="mostrador">Recoger en el mostrador</label>
+                <label htmlFor="tarjeta">Tarjeta de crédito/débito</label>
               </div>
               <div className="radio-group">
-                <input type="radio" id="mesa" name="entrega" value="mesa" />
-                <label htmlFor="mesa">Entregar en mesa de Co-working</label>
+                <input 
+                  type="radio" 
+                  id="paypal" 
+                  name="metodoPago" 
+                  value="paypal"
+                  checked={formData.metodoPago === "paypal"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="paypal">PayPal</label>
+              </div>
+              <div className="radio-group">
+                <input 
+                  type="radio" 
+                  id="transferencia" 
+                  name="metodoPago" 
+                  value="transferencia"
+                  checked={formData.metodoPago === "transferencia"}
+                  onChange={handleChange}
+                />
+                <label htmlFor="transferencia">Transferencia bancaria</label>
               </div>
             </fieldset>
 
-            <div className="form-group">
-              <label htmlFor="mesa-numero">Número de Mesa (si aplica)</label>
-              <input type="text" id="mesa-numero" placeholder="Ej: Mesa 12" />
-            </div>
-
             <button type="submit" className="button">
-              Confirmar Pedido
+              Confirmar Compra
             </button>
           </form>
 
-          {/* Columna 2: Imagen  */}
           <div className="checkout-image">
-            {/* <img src={checkoutImg} alt="Persona pagando en cafetería" /> */}
             <p>
-              Gracias por elegir Nexus. Tu apoyo nos permite seguir siendo un
-              espacio abierto para la cultura y la creatividad en la
-              universidad.
+              Gracias por elegir Librería Nexus. Todos nuestros libros son 
+              cuidadosamente seleccionados para ofrecerte la mejor experiencia 
+              de lectura.
             </p>
           </div>
         </div>

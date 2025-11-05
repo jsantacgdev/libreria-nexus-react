@@ -1,6 +1,42 @@
 [
-  { "id": 1, "title": "Clean Code", "author": "Robert C. Martin", "price": 29.9, "cover": "https://covers.openlibrary.org/b/id/9641982-L.jpg" },
-  { "id": 2, "title": "You Don't Know JS Yet", "author": "Kyle Simpson", "price": 24.5, "cover": "https://covers.openlibrary.org/b/id/10523308-L.jpg" },
-  { "id": 3, "title": "Refactoring", "author": "Martin Fowler", "price": 34.0, "cover": "https://covers.openlibrary.org/b/id/9254153-L.jpg" },
-  { "id": 4, "title": "Design Patterns", "author": "Gamma et al.", "price": 39.0, "cover": "https://covers.openlibrary.org/b/id/9254151-L.jpg" }
+  {
+    "id": 1,
+    "titulo": "Cien años de soledad",
+    "autor": "Gabriel García Márquez",
+    "año": 1967,
+    "sinopsis": "La historia épica de la familia Buendía en el mítico pueblo de Macondo.",
+    "imagen": "https://covers.openlibrary.org/b/id/9641982-L.jpg",
+    "precio": "29,90",
+    "categoria": "ficcion"
+  },
+  {
+    "id": 2,
+    "titulo": "El Quijote",
+    "autor": "Miguel de Cervantes",
+    "año": 1605,
+    "sinopsis": "Las aventuras del caballero Don Quijote y su escudero Sancho Panza.",
+    "imagen": "https://covers.openlibrary.org/b/id/10523308-L.jpg",
+    "precio": "24,50",
+    "categoria": "aventura"
+  },
+  {
+    "id": 3,
+    "titulo": "Clean Code",
+    "autor": "Robert C. Martin",
+    "año": 2008,
+    "sinopsis": "Guía para escribir código limpio y mantenible en programación.",
+    "imagen": "https://covers.openlibrary.org/b/id/9254153-L.jpg",
+    "precio": "34,00",
+    "categoria": "tecnico"
+  },
+  {
+    "id": 4,
+    "titulo": "Design Patterns",
+    "autor": "Gamma et al.",
+    "año": 1994,
+    "sinopsis": "Patrones de diseño reutilizables en el desarrollo de software orientado a objetos.",
+    "imagen": "https://covers.openlibrary.org/b/id/9254151-L.jpg",
+    "precio": "39,00",
+    "categoria": "tecnico"
+  }
 ]

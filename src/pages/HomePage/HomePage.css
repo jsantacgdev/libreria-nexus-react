@@ -1,4 +1,3 @@
-/* src/pages/HomePage/HomePage.css */
 .home-page .hero {
   text-align: center;
   padding: 60px 20px;
@@ -18,10 +17,9 @@
   margin-bottom: 25px;
 }
 
-/* Estilo para las filas y columnas  */
 .features-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos columnas */
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
   text-align: center;
 }
@@ -38,9 +36,8 @@
   margin-bottom: 10px;
 }
 
-/* Responsive para móviles */
 @media (max-width: 768px) {
   .features-grid {
-    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    grid-template-columns: 1fr;
   }
 }

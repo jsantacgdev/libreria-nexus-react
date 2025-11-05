@@ -3,8 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 
 const navItems = [
   { to: "/catalogo", label: "Catálogo" },
+  { to: "/biblioteca", label: "Sobre nosotros" },
   { to: "/coworking", label: "Co-working" },
-  { to: "/cafeteria", label: "Cafetería" },
+  { to: "/menu", label: "Cafetería" },
   { to: "/carrito", label: "Carrito" },
   { to: "/perfil", label: "Perfil" },
 ];
@@ -22,11 +23,12 @@ export default function Header() {
       <div className="container-page h-16 flex items-center justify-between">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2 font-semibold">
-          <span
-            className="inline-block h-8 w-8 rounded-lg bg-primary-600"
-            aria-hidden="true"
+          <img
+            src="/favicon.ico"
+            alt="Librería Nexus"
+            className="h-8 w-8"
           />
-          <span>Nexus</span>
+          <span>Librería Nexus</span>
         </Link>
 
         {/* Desktop nav */}

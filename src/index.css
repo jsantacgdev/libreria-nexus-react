@@ -14,3 +14,20 @@
   .btn-primary { @apply bg-primary-600 text-white hover:bg-primary-700; }
   .link { @apply text-primary-600 hover:text-primary-700 underline-offset-2 hover:underline; }
 }
+
+@layer utilities {
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+}

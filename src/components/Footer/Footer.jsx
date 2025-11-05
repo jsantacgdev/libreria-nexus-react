@@ -1,5 +1,20 @@
+import { useEffect, useState } from "react";
+import { getLibrary } from "../../services/api";
+
 export default function Footer() {
   const year = new Date().getFullYear();
+  const [library, setLibrary] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await getLibrary();
+        setLibrary(data);
+      } catch (e) {
+        console.error("Error cargando información de la librería:", e);
+      }
+    })();
+  }, []);
 
   return (
     <footer className="mt-16 border-t border-slate-200 bg-white">
@@ -9,11 +24,15 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-semibold">
-              <span className="inline-block h-8 w-8 rounded-lg bg-primary-600" aria-hidden="true"></span>
-              <span>Nexus</span>
+              <img
+                src="/favicon.ico"
+                alt="Librería Nexus"
+                className="h-8 w-8"
+              />
+              <span>Librería Nexus</span>
             </div>
             <p className="text-sm text-ink-700">
-              Librería, co-working y cafetería en un solo lugar. Estudia, crea y disfruta.
+              {library?.acercaDe || "Librería, co-working y cafetería en un solo lugar. Estudia, crea y disfruta."}
             </p>
             {/* Social */}
             <div className="flex items-center gap-3 pt-2">
@@ -49,7 +68,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-ink-900">Espacios</h3>
             <ul className="mt-3 space-y-2 text-sm text-ink-700">
               <li><a className="hover:underline" href="/coworking">Co-working</a></li>
-              <li><a className="hover:underline" href="/cafeteria">Cafetería</a></li>
+              <li><a className="hover:underline" href="/menu">Cafetería</a></li>
               <li><a className="hover:underline" href="#">Eventos</a></li>
             </ul>
           </div>
@@ -57,9 +76,27 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-ink-900">Contacto</h3>
             <ul className="mt-3 space-y-2 text-sm text-ink-700">
-              <li><a className="hover:underline" href="mailto:info@nexus.com">info@nexus.com</a></li>
-              <li><a className="hover:underline" href="tel:+34111222333">+34 111 222 333</a></li>
-              <li><span className="text-ink-700">Madrid, España</span></li>
+              <li>
+                <a 
+                  className="hover:underline" 
+                  href={`mailto:${library?.contacto?.email || 'info@nexus.com'}`}
+                >
+                  {library?.contacto?.email || 'info@nexus.com'}
+                </a>
+              </li>
+              <li>
+                <a 
+                  className="hover:underline" 
+                  href={`tel:${library?.contacto?.telefono || '+34111222333'}`}
+                >
+                  {library?.contacto?.telefono || '+34 111 222 333'}
+                </a>
+              </li>
+              <li>
+                <span className="text-ink-700">
+                  {library?.direccion || 'Madrid, España'}
+                </span>
+              </li>
             </ul>
           </div>
         </div>
@@ -67,7 +104,7 @@ export default function Footer() {
         {/* Bottom: legal */}
         <div className="mt-10 flex flex-col gap-3 border-t border-slate-200 pt-6 md:flex-row md:items-center md:justify-between">
           <p className="text-sm text-ink-500">
-            © {year} Nexus. Todos los derechos reservados.
+            © {year} Librería Nexus. Todos los derechos reservados.
           </p>
           <div className="flex gap-4 text-sm">
             <a href="#" className="text-ink-700 hover:underline">Privacidad</a>
